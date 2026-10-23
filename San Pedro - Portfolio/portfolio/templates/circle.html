@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calculate the area of a circle.">
+    <title>Circle Area — John Paolo San Pedro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        {% include '_sidebar.html' %}
+
+        <main class="main-content">
+            <div class="content-wrap tool-wrap">
+                <a class="back-link" href="/"><span aria-hidden="true">←</span> ALL PROJECTS</a>
+                <section class="tool-intro" aria-labelledby="tool-title">
+                    <p class="eyebrow"><span class="eyebrow-line"></span> CALCULATOR / 02</p>
+                    <h1 id="tool-title">Area of a circle<span class="accent-period">.</span></h1>
+                    <p class="intro">Enter the radius and calculate the area using <span class="formula">A = πr²</span>.</p>
+                </section>
+
+                <section class="tool-panel" aria-label="Circle area calculator">
+                    {% if error %}
+                    <p class="form-status error" role="alert">{{ error }}</p>
+                    {% endif %}
+                    <form class="tool-form" action="{{ url_for('main.acircle') }}" method="post">
+                        <label class="tool-field" for="radius">
+                            <span>RADIUS <small>UNITS</small></span>
+                            <input id="radius" type="number" name="radius" min="0" step="any" value="{{ radius }}" placeholder="e.g. 5" required>
+                        </label>
+                        <button class="send-button" type="submit">Calculate area <span aria-hidden="true">↗</span></button>
+                    </form>
+                    {% if result is not none %}
+                    <div class="tool-result" aria-live="polite">
+                        <span class="result-label">AREA</span>
+                        <p>{{ '%.4f'|format(result) }} <span>square units</span></p>
+                    </div>
+                    {% endif %}
+                </section>
+
+                <footer class="page-footer">
+                    <span>© 2026 JOHN PAOLO SAN PEDRO</span>
+                    <span>CALCULATOR 02 / 03</span>
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

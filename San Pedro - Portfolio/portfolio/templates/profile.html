@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile — John Paolo San Pedro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        {% include '_sidebar.html' %}
+        <main class="main-content">
+            <div class="content-wrap tool-wrap">
+                <section class="profile-hero" aria-labelledby="profile-title">
+                    <img class="profile-photo" src="{{ url_for('static', filename='images/profile-photo.png') }}" alt="Portrait of John Paolo San Pedro">
+                    <div class="profile-identity">
+                        <p class="eyebrow"><span class="eyebrow-line"></span> PORTFOLIO / PROFILE</p>
+                        <h1 id="profile-title">John Paolo San Pedro<span class="accent-period">.</span></h1>
+                        <p class="intro">Second-year Bachelor of Science in Computer Engineering student at the Polytechnic University of the Philippines.</p>
+                        <nav class="profile-socials" aria-label="Social media and email">
+                            <a class="profile-social-link" href="https://www.instagram.com/_jaypeesanpedro_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
+                                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <circle class="icon-fill" cx="17.5" cy="6.5" r="1"></circle>
+                                </svg>
+                            </a>
+                            <a class="profile-social-link" href="https://www.facebook.com/jpsanpedro324/" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
+                                <svg class="social-icon facebook-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path class="icon-fill" d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8z"></path>
+                                </svg>
+                            </a>
+                            <a class="profile-social-link" href="mailto:johnpaolodsanpedro@gmail.com" aria-label="Email John Paolo San Pedro">
+                                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                    <path d="m4 7 8 6 8-6"></path>
+                                </svg>
+                            </a>
+                            <span class="profile-social-link profile-social-disabled" role="img" aria-label="LinkedIn profile coming soon">
+                                <svg class="social-icon linkedin-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                    <path class="icon-fill" d="M7 9h3v8H7zm1.5-1.2a1.6 1.6 0 1 1 0-3.2 1.6 1.6 0 0 1 0 3.2M12 9h2.8v1.1c.4-.7 1.2-1.4 2.5-1.4 2.7 0 3.2 1.8 3.2 4.1V17h-3v-3.7c0-.9 0-2.1-1.3-2.1s-1.5 1-1.5 2V17h-3z"></path>
+                                </svg>
+                            </span>
+                        </nav>
+                        <p class="linkedin-note">LinkedIn coming soon</p>
+                    </div>
+                </section>
+                <section class="tool-panel profile-panel">
+                    <span class="result-label">A LITTLE ABOUT ME</span>
+                    <p>I enjoy turning what I learn into small tools that people can use. This site is where I share my practice projects as I keep learning.</p>
+                </section>
+                <footer class="page-footer">
+                    <span>© 2026 JOHN PAOLO SAN PEDRO</span>
+                    <span>PORTFOLIO</span>
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

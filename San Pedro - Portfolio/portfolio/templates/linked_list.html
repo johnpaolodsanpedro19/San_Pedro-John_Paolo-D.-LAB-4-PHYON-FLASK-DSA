@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Interactive singly linked list demonstration.">
+    <title>Linked List — John Paolo San Pedro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="linked-list-page">
+    <div class="page-shell">
+        {% include '_sidebar.html' %}
+        <main class="main-content">
+            <div class="content-wrap tool-wrap">
+                <section class="tool-panel structure-panel linked-list-panel" aria-label="Linked list controls">
+                    <div class="linked-list-heading">
+                        <span>LINKED LIST</span>
+                        <span>{{ values|length }} / 10 NODES</span>
+                    </div>
+
+                    <div class="linked-list-visual" aria-label="Linked list from head to tail" aria-live="polite">
+                        <span>head →</span>
+                        {% if values %}
+                            {% for value in values %}
+                                <span class="linked-list-value">{{ value }}</span>
+                                <span aria-hidden="true">→</span>
+                            {% endfor %}
+                            <span>None</span>
+                            <span aria-hidden="true">·</span>
+                            <span>tail → {{ values[-1] }}</span>
+                        {% else %}
+                            <span>None</span>
+                            <span aria-hidden="true">·</span>
+                            <span>tail → None</span>
+                        {% endif %}
+                    </div>
+
+                    <div class="linked-list-inputs">
+                        <label class="tool-field" for="list-value">
+                            <span>VALUE</span>
+                            <input id="list-value" type="text" name="value" form="list-insert-form" maxlength="40" value="{{ input_value }}" placeholder="e.g. 7">
+                        </label>
+                        <label class="tool-field" for="target-node">
+                            <span>TARGET</span>
+                            <input id="target-node" type="text" name="target" form="list-insert-form" maxlength="40" value="{{ input_target }}" placeholder="e.g. 3">
+                        </label>
+                    </div>
+
+                    <form id="list-insert-form" class="linked-list-actions" method="post">
+                        <div class="linked-list-action-label">INSERT</div>
+                        <div class="linked-list-action-buttons">
+                            <button class="linked-list-button" type="submit" name="operation" value="insert_beginning">At beginning</button>
+                            <button class="linked-list-button" type="submit" name="operation" value="insert_end">At end</button>
+                            <button class="linked-list-button" type="submit" name="operation" value="insert_after">After target</button>
+                        </div>
+                    </form>
+
+                    <div class="linked-list-actions">
+                        <div class="linked-list-action-label">FIND</div>
+                        <div class="linked-list-action-buttons">
+                            <button class="linked-list-button" type="submit" form="list-action-form" name="operation" value="search">Search</button>
+                            <button class="linked-list-button" type="submit" form="list-action-form" name="operation" value="print">Print</button>
+                        </div>
+                    </div>
+
+                    <div class="linked-list-actions">
+                        <div class="linked-list-action-label">REMOVE</div>
+                        <div class="linked-list-action-buttons">
+                            <button class="linked-list-button" type="submit" form="list-action-form" name="operation" value="remove_value">Remove target</button>
+                            <button class="linked-list-button" type="submit" form="list-action-form" name="operation" value="clear">Clear</button>
+                        </div>
+                    </div>
+
+                    <form id="list-action-form" method="post">
+                        <input id="list-action-value" type="hidden" name="value" value="{{ input_target }}">
+                        <input id="list-action-target" type="hidden" name="target" value="{{ input_target }}">
+                    </form>
+
+                    <p class="linked-list-status{% if status_type %} {{ status_type }}{% endif %}" role="status" aria-live="polite">
+                        {{ status or 'The list is empty. head and tail are None.' }}
+                    </p>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/structure-ajax.js') }}" defer></script>
+</body>
+</html>

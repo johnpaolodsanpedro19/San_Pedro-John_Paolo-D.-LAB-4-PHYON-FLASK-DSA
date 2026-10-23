@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Convert text to uppercase.">
+    <title>Uppercase Converter — John Paolo San Pedro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        {% include '_sidebar.html' %}
+
+        <main class="main-content">
+            <div class="content-wrap tool-wrap">
+                <a class="back-link" href="/"><span aria-hidden="true">←</span> ALL PROJECTS</a>
+                <section class="tool-intro" aria-labelledby="tool-title">
+                    <p class="eyebrow"><span class="eyebrow-line"></span> TEXT TOOL / 01</p>
+                    <h1 id="tool-title">Uppercase converter<span class="accent-period">.</span></h1>
+                    <p class="intro">Turn a word, sentence, or any text into uppercase in one click.</p>
+                </section>
+
+                <section class="tool-panel" aria-label="Uppercase converter">
+                    {% if error %}
+                    <p class="form-status error" role="alert">{{ error }}</p>
+                    {% endif %}
+                    <form class="tool-form" action="{{ url_for('main.works') }}" method="post">
+                        <label class="tool-field" for="inputString">
+                            <span>YOUR TEXT</span>
+                            <textarea id="inputString" name="inputString" rows="5" maxlength="5000" placeholder="Type something to convert..." required>{{ input_string }}</textarea>
+                        </label>
+                        <button class="send-button" type="submit">Convert to uppercase <span aria-hidden="true">↗</span></button>
+                    </form>
+                    {% if result is not none %}
+                    <div class="tool-result" aria-live="polite">
+                        <span class="result-label">CONVERTED TEXT</span>
+                        <p>{{ result }}</p>
+                    </div>
+                    {% endif %}
+                </section>
+
+                <footer class="page-footer">
+                    <span>© 2026 JOHN PAOLO SAN PEDRO</span>
+                    <span>TEXT TOOL 01 / 03</span>
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

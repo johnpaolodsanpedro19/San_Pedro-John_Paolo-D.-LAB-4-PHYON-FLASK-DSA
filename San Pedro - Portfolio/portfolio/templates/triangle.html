@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Calculate the area of a triangle.">
+    <title>Triangle Area — John Paolo San Pedro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        {% include '_sidebar.html' %}
+
+        <main class="main-content">
+            <div class="content-wrap tool-wrap">
+                <a class="back-link" href="/"><span aria-hidden="true">←</span> ALL PROJECTS</a>
+                <section class="tool-intro" aria-labelledby="tool-title">
+                    <p class="eyebrow"><span class="eyebrow-line"></span> CALCULATOR / 03</p>
+                    <h1 id="tool-title">Area of a triangle<span class="accent-period">.</span></h1>
+                    <p class="intro">Enter the base and height to calculate the area using <span class="formula">A = ½bh</span>.</p>
+                </section>
+
+                <section class="tool-panel" aria-label="Triangle area calculator">
+                    {% if error %}
+                    <p class="form-status error" role="alert">{{ error }}</p>
+                    {% endif %}
+                    <form class="tool-form" action="{{ url_for('main.triangle') }}" method="post">
+                        <div class="tool-fields-row">
+                            <label class="tool-field" for="base">
+                                <span>BASE <small>UNITS</small></span>
+                                <input id="base" type="number" name="base" min="0" step="any" value="{{ base }}" placeholder="e.g. 8" required>
+                            </label>
+                            <label class="tool-field" for="height">
+                                <span>HEIGHT <small>UNITS</small></span>
+                                <input id="height" type="number" name="height" min="0" step="any" value="{{ height }}" placeholder="e.g. 6" required>
+                            </label>
+                        </div>
+                        <button class="send-button" type="submit">Calculate area <span aria-hidden="true">↗</span></button>
+                    </form>
+                    {% if result is not none %}
+                    <div class="tool-result" aria-live="polite">
+                        <span class="result-label">AREA</span>
+                        <p>{{ '%.4f'|format(result) }} <span>square units</span></p>
+                    </div>
+                    {% endif %}
+                </section>
+
+                <footer class="page-footer">
+                    <span>© 2026 JOHN PAOLO SAN PEDRO</span>
+                    <span>CALCULATOR 03 / 03</span>
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

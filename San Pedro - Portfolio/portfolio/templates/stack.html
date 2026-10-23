@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Interactive stack data structure demonstration.">
+    <title>Stack — John Paolo San Pedro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="stack-page">
+    <div class="page-shell">
+        {% include '_sidebar.html' %}
+        <main class="main-content">
+            <div class="content-wrap tool-wrap">
+                <section class="tool-panel structure-panel stack-ui-panel" aria-label="Stack operations">
+                    <div class="stack-ui-heading">
+                        <span>STACK (LIFO)</span>
+                        <span>{{ values|length }} / 10 NODES</span>
+                    </div>
+
+                    <div class="stack-tabs" role="tablist" aria-label="Stack tools">
+                        <button class="stack-tab" id="stack-operations-tab" type="button" role="tab" aria-selected="true" aria-controls="stack-operations-panel" data-stack-tab="operations">Stack operations</button>
+                        <button class="stack-tab" id="infix-tab" type="button" role="tab" aria-selected="false" aria-controls="infix-panel" data-stack-tab="infix">Infix to postfix</button>
+                    </div>
+
+                    <section id="stack-operations-panel" class="stack-tab-panel" role="tabpanel" aria-labelledby="stack-operations-tab" data-stack-panel="operations">
+                        <div class="stack-ui-visual" aria-label="Stack contents from top to bottom" aria-live="polite">
+                            <span>top →</span>
+                            {% if values %}
+                                {% for value in values %}
+                                    <span class="stack-ui-value">{{ value }}</span>
+                                    <span aria-hidden="true">→</span>
+                                {% endfor %}
+                                <span>None</span>
+                            {% else %}
+                                <span>None</span>
+                            {% endif %}
+                        </div>
+
+                        <label class="tool-field stack-ui-value-field" for="stack-value">
+                            <span>VALUE</span>
+                            <input id="stack-value" type="text" name="value" form="stack-action-form" maxlength="40" value="{{ stack_input }}" placeholder="e.g. 10">
+                        </label>
+
+                        <form id="stack-action-form" class="stack-ui-actions" method="post">
+                            <div class="stack-ui-action-label">MODIFY</div>
+                            <div class="stack-ui-action-buttons">
+                                <button class="stack-ui-button" type="submit" name="operation" value="push">Push</button>
+                                <button class="stack-ui-button" type="submit" name="operation" value="pop">Pop</button>
+                                <button class="stack-ui-button" type="submit" name="operation" value="clear">Clear</button>
+                            </div>
+                            <div class="stack-ui-action-label">INSPECT</div>
+                            <div class="stack-ui-action-buttons">
+                                <button class="stack-ui-button" type="submit" name="operation" value="peek">Peek</button>
+                                <button class="stack-ui-button" type="submit" name="operation" value="print">Print</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <section id="infix-panel" class="stack-tab-panel infix-tab-panel" role="tabpanel" aria-labelledby="infix-tab" data-stack-panel="infix" hidden>
+                        <p class="stack-ui-description">Convert an infix expression using an operator stack. Supports parentheses and the operators <code>+ - * / ^</code>.</p>
+                        <form class="operation-form infix-form" method="post">
+                            <label class="tool-field" for="infix-expression">
+                                <span>INFIX EXPRESSION</span>
+                                <input id="infix-expression" type="text" name="expression" maxlength="200" value="{{ expression }}" placeholder="(1 / 2) * 4">
+                            </label>
+                            <div class="infix-actions">
+                                <button class="stack-ui-button" type="button" data-random-infix-example>Random example</button>
+                                <button class="stack-ui-button" type="submit" name="operation" value="convert">Convert to postfix</button>
+                            </div>
+                        </form>
+                        {% if postfix is not none %}
+                        <div class="postfix-result" aria-live="polite">
+                            <span class="result-label">POSTFIX EXPRESSION</span>
+                            <p>{{ postfix }}</p>
+                        </div>
+                        {% endif %}
+                    </section>
+
+                    <p class="stack-ui-status{% if status_type %} {{ status_type }}{% endif %}" role="status" aria-live="polite">
+                        {{ status or 'Stack is empty. top is None.' }}
+                    </p>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/structure-ajax.js') }}" defer></script>
+</body>
+</html>

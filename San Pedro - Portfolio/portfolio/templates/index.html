@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="John Paolo San Pedro's computer engineering student portfolio.">
+    <title>John Paolo San Pedro — Computer Engineering Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        {% include '_sidebar.html' %}
+
+        <main class="main-content">
+            <div class="content-wrap">
+                <section class="hero" aria-labelledby="hero-title">
+                    <div class="hero-copy">
+                        <p class="eyebrow"><span class="eyebrow-line"></span> STUDENT DEVELOPER</p>
+                        <h1 id="hero-title">John Paolo San Pedro</h1>
+                        <p class="intro">
+                            I’m John Paolo San Pedro, a second-year Computer Engineering student with a passion for becoming a successful developer.
+                        </p>
+                    </div>
+                    <div class="portrait">
+                        <img src="{{ url_for('static', filename='images/home-photo.png') }}" alt="John Paolo San Pedro at the gym">
+                    </div>
+                </section>
+
+                <section class="learning-strip" aria-label="Technologies" data-scroll-reveal>
+                    <div class="strip-heading">CURRENTLY LEARNING</div>
+                    <div class="tech-item"><span class="tech-index">01</span><span>Python</span></div>
+                    <div class="tech-item"><span class="tech-index">02</span><span>JavaScript</span></div>
+                    <div class="tech-item"><span class="tech-index">03</span><span>HTML &amp; CSS</span></div>
+                </section>
+
+                <section class="projects" aria-labelledby="projects-title" data-scroll-reveal>
+                    <div class="section-heading" data-scroll-reveal>
+                        <div>
+                            <h2 id="projects-title">Tools</h2>
+                        </div>
+                        <span class="project-count">01 — 05</span>
+                    </div>
+
+                    <div class="project-grid">
+                        <a class="project-card" href="/works" data-scroll-reveal>
+                            <span class="project-number">01 / TEXT TOOL</span>
+                            <span class="project-title">Uppercase converter</span>
+                            <span class="project-description">Turn any sentence into uppercase.</span>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="project-card" href="/works/area/circle" data-scroll-reveal>
+                            <span class="project-number">02 / CALCULATOR</span>
+                            <span class="project-title">Area of a circle</span>
+                            <span class="project-description">Calculate a circle’s area from its radius.</span>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="project-card" href="/works/area/triangle" data-scroll-reveal>
+                            <span class="project-number">03 / CALCULATOR</span>
+                            <span class="project-title">Area of a triangle</span>
+                            <span class="project-description">Calculate area from a triangle’s base and height.</span>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="project-card" href="/works/linked-list" data-scroll-reveal>
+                            <span class="project-number">04 / DATA STRUCTURE</span>
+                            <span class="project-title">Linked list</span>
+                            <span class="project-description">Insert, remove, and explore connected nodes.</span>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <a class="project-card" href="/works/stack" data-scroll-reveal>
+                            <span class="project-number">05 / DATA STRUCTURE</span>
+                            <span class="project-title">Stack</span>
+                            <span class="project-description">Try push, pop, and peek with a LIFO stack.</span>
+                            <span class="project-arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </section>
+
+                <footer class="page-footer">
+                    <span>© 2026 JOHN PAOLO SAN PEDRO</span>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/scroll-reveal.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<aside class="sidebar">
+    <a class="brand" href="/" aria-label="John Paolo San Pedro home">
+        <span class="brand-mark-wrap">
+            <span class="brand-mark">JP</span>
+            <span class="profile-preview" aria-hidden="true">
+                <img src="{{ url_for('static', filename='images/profile-photo.png') }}" alt="">
+                <span class="profile-preview-copy">
+                    <span class="profile-preview-label">PORTFOLIO / PROFILE</span>
+                    <strong>John Paolo San Pedro</strong>
+                    <span class="profile-preview-description">Computer Engineering student at the Polytechnic University of the Philippines.</span>
+                </span>
+            </span>
+        </span>
+        <span>
+            <strong>John Paolo San Pedro</strong>
+            <small>COMPUTER ENGINEERING STUDENT</small>
+        </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Main navigation">
+        <div class="nav-group">
+            <span class="nav-group-title">PORTFOLIO</span>
+            <a class="nav-link{% if request.path == '/' %} active{% endif %}" href="/" {% if request.path == '/' %}aria-current="page"{% endif %}>
+                <span class="nav-icon" aria-hidden="true">01</span> Home
+            </a>
+            <a class="nav-link{% if request.path == '/profile' %} active{% endif %}" href="/profile" {% if request.path == '/profile' %}aria-current="page"{% endif %}>
+                <span class="nav-icon" aria-hidden="true">02</span> Profile
+            </a>
+            <a class="nav-link{% if request.path == '/contact' %} active{% endif %}" href="/contact" {% if request.path == '/contact' %}aria-current="page"{% endif %}>
+                <span class="nav-icon" aria-hidden="true">03</span> Contact
+            </a>
+        </div>
+
+        <div class="nav-group">
+            <span class="nav-group-title">WORKS</span>
+            <a class="nav-link{% if request.path == '/works' %} active{% endif %}" href="/works" {% if request.path == '/works' %}aria-current="page"{% endif %}>
+                <span class="nav-icon" aria-hidden="true">01</span> Uppercase converter
+            </a>
+            <a class="nav-link{% if request.path == '/works/area/circle' %} active{% endif %}" href="/works/area/circle" {% if request.path == '/works/area/circle' %}aria-current="page"{% endif %}>
+                <span class="nav-icon" aria-hidden="true">02</span> Area of a circle
+            </a>
+            <a class="nav-link{% if request.path == '/works/area/triangle' %} active{% endif %}" href="/works/area/triangle" {% if request.path == '/works/area/triangle' %}aria-current="page"{% endif %}>
+                <span class="nav-icon" aria-hidden="true">03</span> Area of a triangle
+            </a>
+            <a class="nav-link{% if request.path == '/works/linked-list' %} active{% endif %}" href="/works/linked-list" {% if request.path == '/works/linked-list' %}aria-current="page"{% endif %}>
+                <span class="nav-icon" aria-hidden="true">04</span> Linked list
+            </a>
+            <a class="nav-link{% if request.path == '/works/stack' %} active{% endif %}" href="/works/stack" {% if request.path == '/works/stack' %}aria-current="page"{% endif %}>
+                <span class="nav-icon" aria-hidden="true">05</span> Stack
+            </a>
+        </div>
+    </nav>
+
+</aside>
